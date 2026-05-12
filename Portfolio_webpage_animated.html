@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Animated Portfolio Website</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Animate.css -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f4f7fb;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-size: 28px;
+      font-weight: 700;
+      color: white !important;
+    }
+
+    .nav-link {
+      color: #ddd !important;
+      margin-left: 15px;
+      transition: 0.4s;
+    }
+
+    .nav-link:hover {
+      color: #0d6efd !important;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .hero img {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin-bottom: 25px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Floating Animation */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      font-weight: 700;
+      animation: slideInDown 1.5s;
+    }
+
+    .hero span {
+      color: #0d6efd;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: auto;
+      margin-top: 20px;
+      line-height: 1.8;
+      font-size: 18px;
+      animation: fadeIn 2s;
+    }
+
+    .btn-custom {
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: 0.4s;
+      margin-top: 25px;
+    }
+
+    .btn-custom:hover {
+      transform: scale(1.08);
+    }
+
+    /* Section */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInUp 1s;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    /* Cards */
+    .card-custom {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      height: 100%;
+      transition: 0.5s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      animation: fadeCard 1s forwards;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-custom i {
+      font-size: 45px;
+      color: #0d6efd;
+      margin-bottom: 20px;
+      transition: 0.4s;
+    }
+
+    .card-custom:hover i {
+      transform: rotate(10deg) scale(1.2);
+    }
+
+    /* Fade Card Animation */
+    @keyframes fadeCard {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Skills */
+    .progress {
+      height: 14px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      animation: progressAnimation 2s ease;
+    }
+
+    @keyframes progressAnimation {
+      from {
+        width: 0;
+      }
+    }
+
+    /* Contact */
+    .contact-box {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 1.5s;
+    }
+
+    .form-control {
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .form-control:focus {
+      transform: scale(1.02);
+      border-color: #0d6efd;
+      box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a i {
+      font-size: 24px;
+      margin: 0 12px;
+      transition: 0.4s;
+    }
+
+    footer a i:hover {
+      color: #0d6efd;
+      transform: translateY(-5px) scale(1.3);
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <div class="container">
+
+      <a class="navbar-brand" href="#">
+        Ganesh Portfolio
+      </a>
+
+      <button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse"
+        id="navbarNav">
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="about">
+
+    <div class="container animate__animated animate__zoomIn">
+
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+      <h1>Hello, I'm <span>Ganesh Rathod</span></h1>
+
+      <p>
+        Passionate Computer Science student and frontend web developer
+        creating responsive and modern websites using HTML, CSS,
+        Bootstrap, and JavaScript.
+      </p>
+
+      <a href="#projects"
+        class="btn btn-primary btn-custom">
+        Explore Projects
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Projects</h2>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-4">
+
+          <div class="card-custom">
+
+            <i class="bi bi-code-slash"></i>
+
+            <h4>Portfolio Website</h4>
+
+            <p>
+              Responsive portfolio using Bootstrap and animations.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="card-custom">
+
+            <i class="bi bi-journal-richtext"></i>
+
+            <h4>Blog Website</h4>
+
+            <p>
+              Modern blog page with hover effects and animations.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="card-custom">
+
+            <i class="bi bi-coin"></i>
+
+            <h4>Coin Flip App</h4>
+
+            <p>
+              JavaScript coin flip game with random animations.
+            </p>
+
+          </div>
+
+        </div>
+        <!-- Project 5 -->
+<div class="col-md-4">
+
+  <div class="card-custom">
+
+    <i class="bi bi-grid-3x3-gap-fill"></i>
+
+    <h4>Image Gallery</h4>
+
+    <p>
+      Created a responsive image gallery using CSS Grid
+      with 3-column desktop layout and mobile responsiveness.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- Project 6 -->
+<div class="col-md-4">
+
+  <div class="card-custom">
+
+    <i class="bi bi-rocket-takeoff-fill"></i>
+
+    <h4>NovaAI Landing Page</h4>
+
+    <p>
+      Designed a responsive startup landing page using
+      Flexbox and CSS Grid with testimonials and contact section.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- Project 7 -->
+<div class="col-md-4">
+
+  <div class="card-custom">
+
+    <i class="bi bi-cup-hot-fill"></i>
+
+    <h4>Coffee Shop Website</h4>
+
+    <p>
+      Built an animated coffee shop website with
+      modern UI, hover effects, and responsive design.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- Project 8 -->
+<div class="col-md-4">
+
+  <div class="card-custom">
+
+    <i class="bi bi-music-note-beamed"></i>
+
+    <h4>MusicFest Event Website</h4>
+
+    <p>
+      Developed a Bootstrap event website with ticket booking,
+      event cards, and responsive layout.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- Project 9 -->
+<div class="col-md-4">
+
+  <div class="card-custom">
+
+    <i class="bi bi-person-vcard-fill"></i>
+
+    <h4>Advanced Portfolio Website</h4>
+
+    <p>
+      Enhanced personal portfolio website with education,
+      skills, projects, and professional contact section.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- Project 10 -->
+<div class="col-md-4">
+
+  <div class="card-custom">
+
+    <i class="bi bi-stars"></i>
+
+    <h4>Animated Webpage</h4>
+
+    <p>
+      Added CSS animations, transitions, hover effects,
+      and responsive interactive elements to webpages.
+    </p>
+
+  </div>
+
+</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" style="background:#eef2f7;">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Skills</h2>
+        <p>Technologies and tools I work with</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <div class="skill">
+            <h5>HTML</h5>
+            <div class="progress">
+              <div class="progress-bar" style="width:95%">95%</div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <h5>CSS</h5>
+            <div class="progress">
+              <div class="progress-bar bg-success" style="width:90%">90%</div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <h5>Bootstrap</h5>
+            <div class="progress">
+              <div class="progress-bar bg-info" style="width:85%">85%</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="skill">
+            <h5>JavaScript</h5>
+            <div class="progress">
+              <div class="progress-bar bg-warning" style="width:75%">75%</div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <h5>Java</h5>
+            <div class="progress">
+              <div class="progress-bar bg-danger" style="width:80%">80%</div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <h5>SQL</h5>
+            <div class="progress">
+              <div class="progress-bar bg-dark" style="width:70%">70%</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact Me</h2>
+      </div>
+
+      <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+          <div class="contact-box">
+
+            <form>
+
+              <input type="text"
+                class="form-control"
+                placeholder="Enter Your Name">
+
+              <input type="email"
+                class="form-control"
+                placeholder="Enter Your Email">
+
+              <textarea rows="5"
+                class="form-control"
+                placeholder="Enter Your Message"></textarea>
+
+              <button class="btn btn-primary w-100 py-3">
+                Send Message
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+
+    <p>© 2026 Ganesh Rathod | Animated Portfolio</p>
+
+    <div>
+
+      <a href="https://facebook.com"
+        target="_blank">
+        <i class="bi bi-facebook"></i>
+      </a>
+
+      <a href="https://instagram.com"
+        target="_blank">
+        <i class="bi bi-instagram"></i>
+      </a>
+
+      <a href="https://github.com"
+        target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+
+      <a href="https://youtube.com"
+        target="_blank">
+        <i class="bi bi-youtube"></i>
+      </a>
+
+    </div>
+
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
